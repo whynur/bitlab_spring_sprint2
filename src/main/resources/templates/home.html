@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+
+    <div layout:fragment="mainContent">
+        <div class="row">
+            <div class="col-12 d-flex flex-wrap gap-4">
+                <div th:each="apps : ${lists}">
+                    <div class="card mt-4" style="width: 39.7rem;">
+                        <div class="card-body">
+                            <div class="d-flex">
+                            <span th:if="${apps.handled==false}">
+                                <span class="text-danger fw-bolder me-2">*(Новая)</span>
+                            </span>
+                                <h5 class="card-title">
+                                    <label>Заявка от </label>
+                                    <span th:text="${apps.userName}" class="fw-bolder"></span>
+                                </h5>
+                            </div>
+
+                            <p class="card-text text-muted mb-0 mt-3">
+                                <label>Курс: </label>
+                                <span class="fw-bolder" th:text="${apps.course.name}"></span>
+                            </p>
+                            <p class="card-text mt-1" th:text="${apps.commentary}"></p>
+                            <p class="card-link text-dark fw-bolder mb-0">
+                                <label>Тел: </label>
+                                <span th:text="${apps.phone}"></span>
+                                <a th:href="@{'/details/'+${apps.id}}" class="card-link text-decoration-none ms-2 fw-normal">Подробнее</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</html>

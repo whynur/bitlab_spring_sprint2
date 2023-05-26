@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+
+  <div layout:fragment="mainContent">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <form th:action="@{'/addapplication'}" method="post">
+            <div class="row mt-3">
+                <div class="col-12">
+                  <label class="form-label">ФИО : </label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <input type="text" class="form-control" name="fullName" placeholder="ФИО : ">
+              </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <label class="form-label">Курс : </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <select class="form-select" name="course_id">
+                        <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.name} + ' - ' + ${course.price} + ' USD'"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <label class="form-label">Телефон : </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <input type="text" class="form-control" name="phone" placeholder="+7(7__)_______">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <label class="form-label">Комментарии : </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <textarea class="form-control" name="comment" placeholder="Комментарии"></textarea>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <button class="btn btn-success">Добавить Заявку</button>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</html>
